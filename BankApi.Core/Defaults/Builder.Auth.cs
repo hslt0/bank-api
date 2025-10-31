@@ -1,3 +1,5 @@
+using OpenIddict.Server.AspNetCore;
+using OpenIddict.Validation.AspNetCore;
 using AspNetCore.Authentication.ApiKey;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -6,6 +8,29 @@ public static partial class ApiBuilder
 {
     public static IServiceCollection AddAuthServices(this IServiceCollection services)
     {
+        services.AddOpenIddict()
+            .AddCore(_ =>
+            {
+                //Todo: add db, probably must start working
+            })
+            .AddServer(options =>
+            {
+                options.AllowPasswordFlow()
+                    .AllowClientCredentialsFlow()
+                    .AllowRefreshTokenFlow();
+                options.SetTokenEndpointUris("/v1/connect/token", "/v2/connect/token");
+                options.AcceptAnonymousClients();
+                options.AddDevelopmentEncryptionCertificate()
+                    .AddDevelopmentSigningCertificate();
+                options.UseAspNetCore()
+                    .EnableTokenEndpointPassthrough();
+            })
+            .AddValidation(options =>
+            {
+                options.UseLocalServer();
+                options.UseAspNetCore();
+            });
+
         ApiKeyEvents apiKeyEvents = new()
         {
             OnValidateKey = context =>
@@ -22,7 +47,11 @@ public static partial class ApiBuilder
             }
         };
 
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme;
+            })
             .AddApiKeyInHeader($"{ApiKeyDefaults.AuthenticationScheme}-Header", options =>
             {
                 options.KeyName = "Ocp-Apim-Subscription-Key";
@@ -32,8 +61,6 @@ public static partial class ApiBuilder
             .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {
                 options.TokenValidationParameters = GlobalConfiguration.ApiSettings!.TokenValidation;
-
-                //SignatureValidator added because of issue in library: https://github.com/dotnet/aspnetcore/issues/52075#issuecomment-2037161895
                 options.TokenValidationParameters.SignatureValidator = (token, _) => new JsonWebToken(token);
             });
 
@@ -41,13 +68,13 @@ public static partial class ApiBuilder
         {
             options.AddPolicy("bank_god", policy =>
             {
-                policy.RequireAuthenticatedUser(); // an anonymous user can still provide roles and claims if we do not add this
+                policy.RequireAuthenticatedUser();
                 policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
                 policy.RequireRole("banker", "ceo");
             });
             options.AddPolicy("bank_subscription", policy =>
             {
-                policy.RequireAuthenticatedUser(); // an anonymous user can still provide roles and claims if we do not add this
+                policy.RequireAuthenticatedUser();
                 policy.AuthenticationSchemes.Add($"{ApiKeyDefaults.AuthenticationScheme}-Header");
             });
         });

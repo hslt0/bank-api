@@ -17,7 +17,7 @@ builder.AddComplianceServices();
 builder.AddAzureClients();
 builder.Services.ConfigureJson();
 builder.Services.AddHealthChecks();
-builder.Services.AddAuthServices();
+builder.Services.AddAuthServices(); // Oauth service
 builder.Services.AddDataServices();
 builder.Services.AddDownstreamApiServices();
 builder.Services.AddOpenApiServices();
@@ -48,6 +48,7 @@ if (app.Environment.IsDevelopment())
 
 app.Services.EnsureDataServicesCreated();
 
+app.MapOauthEndpoints();
 app.MapBankEndpoints();
 app.MapTellerEndpoints();
 app.MapHealthChecks("/health").RequireAuthorization("bank_subscription");

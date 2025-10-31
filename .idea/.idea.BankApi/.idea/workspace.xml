@@ -15,9 +15,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939e0976-0f83-487e-afa9-7fc8be32b162" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.OpenIddict.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Core/BankApi.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/BankApi.Core.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BankApi.Core/Implementation/Operation.Oauth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.OAuth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.OpenIddict.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.Bank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.Bank.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Beta/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +41,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/BankApi.Core/Defaults/Builder.OpenIddict.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BankApi.Core/Implementation/Operation.Oauth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.OAuth.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -240,8 +245,19 @@
       <workItem from="1753441447201" duration="126000" />
       <workItem from="1761679214332" duration="1356000" />
       <workItem from="1761834052549" duration="522000" />
-      <workItem from="1761835030021" duration="4288000" />
+      <workItem from="1761835030021" duration="4592000" />
+      <workItem from="1761912647909" duration="39000" />
+      <workItem from="1761912795615" duration="6824000" />
     </task>
+    <task id="LOCAL-00001" summary="test integration of openiddict">
+      <option name="closed" value="true" />
+      <created>1761839625976</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761839625976</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +278,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="test integration of openiddict" />
+    <option name="LAST_COMMIT_MESSAGE" value="test integration of openiddict" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
