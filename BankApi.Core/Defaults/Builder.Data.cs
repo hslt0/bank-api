@@ -16,7 +16,7 @@ public static partial class ApiBuilder
         
         services.AddDbContext<OAuthDb>(options =>
         {
-            options.UseInMemoryDatabase(GlobalConfiguration.ApiSettings!.DatabaseName);
+            options.UseInMemoryDatabase(GlobalConfiguration.ApiSettings!.OAuthDatabaseName);
         });
 
         return services;

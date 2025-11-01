@@ -25,9 +25,249 @@
         "tags": [
           "OAuth"
         ],
-        "summary": "Get token",
-        "description": "Return token for a user",
+        "summary": "Get access token",
+        "description": "Issues an access token using password, client credentials, or refresh token flow.",
         "operationId": "GetToken",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "API-Version": {
+                "$ref": "#/components/headers/API-Version"
+              },
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/Access-Control-Allow-Origin"
+              },
+              "Access-Control-Expose-Headers": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-JWS-Signature": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-Rate-Limit-Limit": {
+                "$ref": "#/components/headers/X-Rate-Limit-Limit"
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [ ]
+      }
+    },
+    "/connect/authorize": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Authorize user",
+        "description": "Handles authorization requests and issues authorization codes.",
+        "operationId": "Authorize",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "API-Version": {
+                "$ref": "#/components/headers/API-Version"
+              },
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/Access-Control-Allow-Origin"
+              },
+              "Access-Control-Expose-Headers": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-JWS-Signature": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-Rate-Limit-Limit": {
+                "$ref": "#/components/headers/X-Rate-Limit-Limit"
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [ ]
+      }
+    },
+    "/connect/logout": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "End user session",
+        "description": "Revokes tokens and ends the user's session.",
+        "operationId": "Logout",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "API-Version": {
+                "$ref": "#/components/headers/API-Version"
+              },
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/Access-Control-Allow-Origin"
+              },
+              "Access-Control-Expose-Headers": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-JWS-Signature": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-Rate-Limit-Limit": {
+                "$ref": "#/components/headers/X-Rate-Limit-Limit"
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [ ]
+      }
+    },
+    "/connect/introspect": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Introspect token",
+        "description": "Validates an access or refresh token and returns metadata about it.",
+        "operationId": "Introspect",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "API-Version": {
+                "$ref": "#/components/headers/API-Version"
+              },
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/Access-Control-Allow-Origin"
+              },
+              "Access-Control-Expose-Headers": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-JWS-Signature": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-Rate-Limit-Limit": {
+                "$ref": "#/components/headers/X-Rate-Limit-Limit"
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [ ]
+      }
+    },
+    "/connect/userinfo": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "User information endpoint",
+        "description": "Returns claims about the currently authenticated user.",
+        "operationId": "UserInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "API-Version": {
+                "$ref": "#/components/headers/API-Version"
+              },
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/Access-Control-Allow-Origin"
+              },
+              "Access-Control-Expose-Headers": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-JWS-Signature": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-Rate-Limit-Limit": {
+                "$ref": "#/components/headers/X-Rate-Limit-Limit"
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [ ]
+      }
+    },
+    "/connect/revoke": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Revoke token",
+        "description": "Revokes an existing access or refresh token.",
+        "operationId": "Revoke",
         "responses": {
           "200": {
             "description": "OK",

@@ -1,7 +1,7 @@
-using OpenIddict.Validation.AspNetCore;
 using AspNetCore.Authentication.ApiKey;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.JsonWebTokens;
+using OpenIddict.Validation.AspNetCore;
 
 public static partial class ApiBuilder
 {
@@ -15,14 +15,32 @@ public static partial class ApiBuilder
             .AddServer(options =>
             {
                 options.AllowPasswordFlow()
-                    .AllowClientCredentialsFlow()
-                    .AllowRefreshTokenFlow();
-                options.SetTokenEndpointUris("/v1/connect/token", "/v2/connect/token");
+                       .AllowClientCredentialsFlow()
+                       .AllowRefreshTokenFlow()
+                       .AllowAuthorizationCodeFlow()
+                       .AllowImplicitFlow()
+                       .AllowDeviceAuthorizationFlow();
+                
+                //TODO: find missing endpoint
+                options.SetAuthorizationEndpointUris("/connect/authorize");
+                options.SetTokenEndpointUris("/connect/token");
+                options.SetIntrospectionEndpointUris("/connect/introspect");
+                options.SetRevocationEndpointUris("/connect/revoke");
+                options.SetUserInfoEndpointUris("/connect/userinfo");
+                options.SetEndSessionEndpointUris("/connect/logout");
+                options.SetDeviceAuthorizationEndpointUris("/connect/deviceauthorization");
+
                 options.AcceptAnonymousClients();
+
                 options.AddDevelopmentEncryptionCertificate()
-                    .AddDevelopmentSigningCertificate();
+                       .AddDevelopmentSigningCertificate();
+
                 options.UseAspNetCore()
-                    .EnableTokenEndpointPassthrough();
+                       .EnableTokenEndpointPassthrough()
+                       .EnableAuthorizationEndpointPassthrough()
+                       .EnableEndSessionEndpointPassthrough()
+                       .EnableUserInfoEndpointPassthrough()
+                       .EnableStatusCodePagesIntegration();
             })
             .AddValidation(options =>
             {
@@ -35,13 +53,10 @@ public static partial class ApiBuilder
             OnValidateKey = context =>
             {
                 if (context.ApiKey == "Lifetime Subscription")
-                {
                     context.ValidationSucceeded();
-                }
                 else
-                {
                     context.ValidationFailed();
-                }
+
                 return Task.CompletedTask;
             }
         };
@@ -71,6 +86,7 @@ public static partial class ApiBuilder
                 policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
                 policy.RequireRole("banker", "ceo");
             });
+
             options.AddPolicy("bank_subscription", policy =>
             {
                 policy.RequireAuthenticatedUser();
