@@ -21,6 +21,8 @@ public static class GlobalConfiguration
       public required FixedWindowRateLimiterOptions FixedWindowRateLimit { get; set; }
       public required HybridCacheEntryOptions Cache { get; set; }
       public required string DatabaseName { get; set; }
+      
+      public required string OAuthDatabaseName { get; set; }
    }
 
    public class EntraIdOptions

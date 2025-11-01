@@ -1,4 +1,3 @@
-using OpenIddict.Server.AspNetCore;
 using OpenIddict.Validation.AspNetCore;
 using AspNetCore.Authentication.ApiKey;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -9,9 +8,9 @@ public static partial class ApiBuilder
     public static IServiceCollection AddAuthServices(this IServiceCollection services)
     {
         services.AddOpenIddict()
-            .AddCore(_ =>
+            .AddCore(options =>
             {
-                //Todo: add db, probably must start working
+                options.UseEntityFrameworkCore().UseDbContext<OAuthDb>();
             })
             .AddServer(options =>
             {

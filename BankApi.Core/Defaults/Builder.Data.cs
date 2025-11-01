@@ -13,6 +13,11 @@ public static partial class ApiBuilder
             options.DefaultEntryOptions = GlobalConfiguration.ApiSettings!.Cache;
         });
         services.AddDatabaseDeveloperPageExceptionFilter();
+        
+        services.AddDbContext<OAuthDb>(options =>
+        {
+            options.UseInMemoryDatabase(GlobalConfiguration.ApiSettings!.DatabaseName);
+        });
 
         return services;
     }
@@ -21,5 +26,6 @@ public static partial class ApiBuilder
     {
         using var scope = provider.CreateScope();
         scope.ServiceProvider.GetRequiredService<BankDb>().Database.EnsureCreated();
+        scope.ServiceProvider.GetRequiredService<OAuthDb>().Database.EnsureCreated();
     }
 }
