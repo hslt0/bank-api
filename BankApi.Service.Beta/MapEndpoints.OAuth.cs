@@ -42,6 +42,18 @@
             .WithName("Revoke")
             .WithSummary("Revoke token")
             .WithDescription("Revokes an existing access or refresh token.");
+        
+        // === DEVICE AUTHORIZATION ===
+        oauthItems.MapPost("/deviceauthorization", OauthOperation.DeviceAuthorization)
+            .WithName("DeviceAuthorization")
+            .WithSummary("Device authorization endpoint")
+            .WithDescription("Starts a device authorization flow for devices without browsers.");
+
+// === END-USER VERIFICATION ===
+        oauthItems.MapGet("/enduserverification", OauthOperation.EndUserVerification)
+            .WithName("EndUserVerification")
+            .WithSummary("End user verification endpoint")
+            .WithDescription("Allows the user to verify and authorize a device code.");
 
         return app;
     }

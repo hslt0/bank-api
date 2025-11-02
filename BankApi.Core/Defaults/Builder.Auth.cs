@@ -22,13 +22,14 @@ public static partial class ApiBuilder
                        .AllowDeviceAuthorizationFlow();
                 
                 //TODO: find missing endpoint
-                options.SetAuthorizationEndpointUris("/connect/authorize");
-                options.SetTokenEndpointUris("/connect/token");
-                options.SetIntrospectionEndpointUris("/connect/introspect");
-                options.SetRevocationEndpointUris("/connect/revoke");
-                options.SetUserInfoEndpointUris("/connect/userinfo");
-                options.SetEndSessionEndpointUris("/connect/logout");
-                options.SetDeviceAuthorizationEndpointUris("/connect/deviceauthorization");
+                options.SetAuthorizationEndpointUris("v2/connect/authorize");
+                options.SetTokenEndpointUris("v2/connect/token");
+                options.SetIntrospectionEndpointUris("v2/connect/introspect");
+                options.SetRevocationEndpointUris("v2/connect/revoke");
+                options.SetUserInfoEndpointUris("v2/connect/userinfo");
+                options.SetEndSessionEndpointUris("v2/connect/logout");
+                options.SetDeviceAuthorizationEndpointUris("v2/connect/deviceauthorization");
+                options.SetEndUserVerificationEndpointUris("v2/connect/enduserverification");
 
                 options.AcceptAnonymousClients();
 

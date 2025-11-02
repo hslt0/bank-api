@@ -7,10 +7,8 @@ public class User
     public string Username { get; set; } = string.Empty;
 
     public string PasswordHash { get; set; } = string.Empty;
-
-    public string FullName { get; set; } = string.Empty;
-
-    public string Role { get; set; } = "user"; // default role
+    
+    public string Role { get; set; } = "user";
 
     public ICollection<OpenIddictEntityFrameworkCoreToken> Tokens { get; set; } = new List<OpenIddictEntityFrameworkCoreToken>();
 }

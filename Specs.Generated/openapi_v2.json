@@ -308,6 +308,102 @@
         "security": [ ]
       }
     },
+    "/connect/deviceauthorization": {
+      "post": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Device authorization endpoint",
+        "description": "Starts a device authorization flow for devices without browsers.",
+        "operationId": "DeviceAuthorization",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "API-Version": {
+                "$ref": "#/components/headers/API-Version"
+              },
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/Access-Control-Allow-Origin"
+              },
+              "Access-Control-Expose-Headers": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-JWS-Signature": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-Rate-Limit-Limit": {
+                "$ref": "#/components/headers/X-Rate-Limit-Limit"
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [ ]
+      }
+    },
+    "/connect/enduserverification": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "End user verification endpoint",
+        "description": "Allows the user to verify and authorize a device code.",
+        "operationId": "EndUserVerification",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "API-Version": {
+                "$ref": "#/components/headers/API-Version"
+              },
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/Access-Control-Allow-Origin"
+              },
+              "Access-Control-Expose-Headers": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-JWS-Signature": {
+                "$ref": "#/components/headers/GenericStringHeader"
+              },
+              "X-Rate-Limit-Limit": {
+                "$ref": "#/components/headers/X-Rate-Limit-Limit"
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          },
+          "422": {
+            "$ref": "#/components/responses/422"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "429": {
+            "$ref": "#/components/responses/429"
+          }
+        },
+        "security": [ ]
+      }
+    },
     "/banks": {
       "get": {
         "tags": [

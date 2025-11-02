@@ -27,15 +27,14 @@ public static class OauthOperation
                     }));
             }
 
-            var principal = CreatePrincipal(user.Username, user.FullName, user.Role);
+            var principal = CreatePrincipal(user.Username, user.Role);
             principal.SetScopes(request.GetScopes());
             return Results.SignIn(principal, authenticationScheme: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
 
         if (request.IsClientCredentialsGrantType())
         {
-            // Example: Client Credentials flow
-            var principal = CreatePrincipal(request.ClientId!, "Service Account", "system");
+            var principal = CreatePrincipal(request.ClientId!, "Service Account");
             principal.SetScopes(request.GetScopes());
             return Results.SignIn(principal, authenticationScheme: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
         }
@@ -57,7 +56,7 @@ public static class OauthOperation
         var request = context.GetOpenIddictServerRequest()
                       ?? throw new InvalidOperationException("Invalid OpenID request.");
 
-        var principal = CreatePrincipal("admin", "Administrator", "banker");
+        var principal = CreatePrincipal("admin", "Administrator");
         principal.SetScopes(request.GetScopes());
         return Results.SignIn(principal, authenticationScheme: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
@@ -89,7 +88,6 @@ public static class OauthOperation
             return Results.Ok(new { active = false });
         }
 
-        // Extract scopes from the token payload if present
         string? scopeString = null;
         if (!string.IsNullOrEmpty(tokenEntity.Payload))
         {
@@ -117,7 +115,7 @@ public static class OauthOperation
         return Results.Ok(new
         {
             active = true,
-            username = username,
+            username,
             client_id = tokenEntity.Application?.ClientId,
             scope = scopeString,
             exp = tokenEntity.ExpirationDate.HasValue
@@ -150,12 +148,11 @@ public static class OauthOperation
         return Results.Ok(new { revoked = true });
     }
 
-    private static ClaimsPrincipal CreatePrincipal(string username, string name, string role)
+    private static ClaimsPrincipal CreatePrincipal(string username, string role)
     {
         var claims = new List<Claim>
         {
             new(OpenIddictConstants.Claims.Subject, username),
-            new(OpenIddictConstants.Claims.Name, name),
             new(OpenIddictConstants.Claims.Role, role)
         };
 
@@ -175,5 +172,76 @@ public static class OauthOperation
         });
 
         return principal;
+    }
+    
+    public static async Task<IResult> DeviceAuthorization(HttpContext context, OAuthDb db)
+    {
+        var request = context.GetOpenIddictServerRequest()
+                      ?? throw new InvalidOperationException("Invalid device authorization request.");
+
+        if (string.IsNullOrEmpty(request.ClientId))
+            return Results.BadRequest(new { error = "invalid_client", error_description = "Missing client_id" });
+        
+        var deviceCode = Guid.NewGuid().ToString("N");
+        var userCode = Random.Shared.Next(100000, 999999).ToString();
+
+        var record = new DeviceAuthorization
+        {
+            DeviceCode = deviceCode,
+            UserCode = userCode,
+            IsApproved = false,
+            ExpiresAt = DateTime.UtcNow.AddMinutes(10),
+            Username = null,
+        };
+
+        db.DeviceAuthorizations.Add(record);
+        await db.SaveChangesAsync();
+
+        var verificationUri = $"{context.Request.Scheme}://{context.Request.Host}/connect/enduserverification";
+
+        var response = new
+        {
+            device_code = deviceCode,
+            user_code = userCode,
+            verification_uri = verificationUri,
+            verification_uri_complete = $"{verificationUri}?user_code={userCode}",
+            expires_in = 600,
+            interval = 5
+        };
+
+        return Results.Json(response);
+    }
+    
+    public static async Task<IResult> EndUserVerification(HttpContext context, OAuthDb db)
+    {
+        var userCode = context.Request.Query["user_code"].FirstOrDefault();
+        var username = context.Request.Query["username"].FirstOrDefault();
+        var password = context.Request.Query["password"].FirstOrDefault();
+
+        if (string.IsNullOrEmpty(userCode))
+            return Results.BadRequest(new { error = "Missing user_code" });
+
+        var record = await db.DeviceAuthorizations.FirstOrDefaultAsync(d =>
+            d.UserCode == userCode && d.ExpiresAt > DateTime.UtcNow);
+
+        if (record == null)
+            return Results.BadRequest(new { error = "Invalid or expired user code" });
+
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            return Results.BadRequest(new { error = "Missing username or password" });
+
+        var user = await db.Users.FirstOrDefaultAsync(u => u.Username == username);
+        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+            return Results.BadRequest(new { error = "Invalid username or password" });
+
+        record.Username = username;
+        record.IsApproved = true;
+        await db.SaveChangesAsync();
+
+        return Results.Ok(new
+        {
+            message = "Device successfully authorized. You can return to your device now.",
+            device_code = record.DeviceCode
+        });
     }
 }
