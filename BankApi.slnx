@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="BankApi.Client\BankApi.Client.csproj" Type="Classic C#" />
   <Project Path="BankApi.Core/BankApi.Core.csproj" />
   <Project Path="BankApi.Orchestration/BankApi.Orchestration.csproj" />
   <Project Path="BankApi.Service.Api\BankApi.Service.Api.csproj" />

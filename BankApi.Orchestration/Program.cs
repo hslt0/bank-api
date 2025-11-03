@@ -4,7 +4,10 @@ var blobs = builder.AddAzureStorage("storage")
                    .RunAsEmulator()
                    .AddBlobs("BankStorage");
 
-builder.AddProject<Projects.BankApi_Service_Api>("BankApiService-Beta")
+var api = builder.AddProject<Projects.BankApi_Service_Api>("BankApiService-Api")
        .WithReference(blobs);
+
+builder.AddProject<Projects.BankApi_Client>("BankApiClient-Client")
+    .WithReference(api);
 
 builder.Build().Run();

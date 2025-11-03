@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BankApi.Client\BankApi.Client.csproj" />
     <ProjectReference Include="..\BankApi.Service.Api\BankApi.Service.Api.csproj" />
   </ItemGroup>
 
