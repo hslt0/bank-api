@@ -18,10 +18,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939e0976-0f83-487e-afa9-7fc8be32b162" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/BankApi.Client/ApiClient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BankApi.Client/Models/Bank.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BankApi.Client/Models/TokenResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Client/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Client/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankApi.Orchestration/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Orchestration/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.slnx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +44,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f7adad0bb41bbac9168e6085f034291f56362cd3f7ec69c2a2485ea586bcd/IAuthenticationSchemeProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BankApi.Client/ApiClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BankApi.Client/Models/Bank.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BankApi.Client/Models/TokenResponse.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BankApi.Client/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Versioning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BankApi.Core/Implementation/Db.OAuth.cs" root0="FORCE_HIGHLIGHTING" />
@@ -67,7 +73,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Project.BankApi.Client.executor": "Run",
+    ".NET Project.Run All.executor": "Run",
+    ".NET Project.Unnamed.executor": "Run",
     "Aspire Host.BankApi.Orchestration: https.executor": "Run",
+    "Aspire Host.Launch all projects.executor": "Run",
+    "Attach to Process.4112:BankApi.Client.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "client",
@@ -81,7 +92,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Aspire Host.BankApi.Orchestration: https">
+  <component name="RunManager" selected=".NET Project.BankApi.Client">
     <configuration name="BankApi.Orchestration: generate-manifest" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" />
       <option name="PROJECT_TFM" value="net10.0" />
@@ -89,7 +100,7 @@
       <option name="TRACK_ARGUMENTS" value="1" />
       <option name="ARGUMENTS" value="--publisher manifest --output-path ../Infra.Generated/aspire-manifest.json" />
       <option name="TRACK_WORKING_DIRECTORY" value="1" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BankApi.Orchestration/bin/Debug/net10.0" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BankApi.Orchestration" />
       <option name="TRACK_ENVS" value="1" />
       <envs>
         <env name="DOTNET_LAUNCH_PROFILE" value="generate-manifest" />
@@ -108,16 +119,16 @@
       <option name="TRACK_ARGUMENTS" value="1" />
       <option name="ARGUMENTS" value="" />
       <option name="TRACK_WORKING_DIRECTORY" value="1" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BankApi.Orchestration/bin/Debug/net10.0" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BankApi.Orchestration" />
       <option name="TRACK_ENVS" value="1" />
       <envs>
-        <env name="DOTNET_ENVIRONMENT" value="Development" />
         <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
+        <env name="ASPIRE_ALLOW_UNSECURED_TRANSPORT" value="true" />
+        <env name="DOTNET_ENVIRONMENT" value="Development" />
         <env name="DOTNET_DASHBOARD_OTLP_ENDPOINT_URL" value="http://localhost:19099" />
         <env name="DOTNET_RESOURCE_SERVICE_ENDPOINT_URL" value="http://localhost:20093" />
-        <env name="ASPNETCORE_URLS" value="http://localhost:15088" />
-        <env name="ASPIRE_ALLOW_UNSECURED_TRANSPORT" value="true" />
         <env name="DOTNET_LAUNCH_PROFILE" value="http" />
+        <env name="ASPNETCORE_URLS" value="http://localhost:15088" />
       </envs>
       <option name="USE_PODMAN_RUNTIME" value="0" />
       <option name="TRACK_URL" value="1" />
@@ -134,15 +145,15 @@
       <option name="TRACK_ARGUMENTS" value="1" />
       <option name="ARGUMENTS" value="" />
       <option name="TRACK_WORKING_DIRECTORY" value="1" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BankApi.Orchestration/bin/Debug/net10.0" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BankApi.Orchestration" />
       <option name="TRACK_ENVS" value="1" />
       <envs>
-        <env name="DOTNET_ENVIRONMENT" value="Development" />
         <env name="ASPNETCORE_ENVIRONMENT" value="Development" />
+        <env name="DOTNET_ENVIRONMENT" value="Development" />
         <env name="DOTNET_DASHBOARD_OTLP_ENDPOINT_URL" value="https://localhost:21159" />
         <env name="DOTNET_RESOURCE_SERVICE_ENDPOINT_URL" value="https://localhost:22171" />
-        <env name="ASPNETCORE_URLS" value="https://localhost:17109;http://localhost:15088" />
         <env name="DOTNET_LAUNCH_PROFILE" value="https" />
+        <env name="ASPNETCORE_URLS" value="https://localhost:17109;http://localhost:15088" />
       </envs>
       <option name="USE_PODMAN_RUNTIME" value="0" />
       <option name="TRACK_URL" value="1" />
@@ -153,11 +164,11 @@
       </method>
     </configuration>
     <configuration name="BankApi.Client" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/BankApi.Client/bin/Debug/net9.0/BankApi.Client.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BankApi.Client/bin/Debug/net9.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
       <option name="PTY_MODE" value="Auto" />
@@ -170,7 +181,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net9.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -262,6 +273,17 @@
         <option name="Build" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.BankApi.Service.Api: http" />
+      <item itemvalue=".NET Launch Settings Profile.BankApi.Service.Api: https" />
+      <item itemvalue=".NET Launch Settings Profile.BankApi.Service.Stable: http" />
+      <item itemvalue=".NET Launch Settings Profile.BankApi.Service.Stable: https" />
+      <item itemvalue=".NET Project.BankApi.Client" />
+      <item itemvalue=".NET Project.BankApi.Tests" />
+      <item itemvalue="Aspire Host.BankApi.Orchestration: generate-manifest" />
+      <item itemvalue="Aspire Host.BankApi.Orchestration: http" />
+      <item itemvalue="Aspire Host.BankApi.Orchestration: https" />
+    </list>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -327,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762178760423</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="client init and aspire registration">
+      <option name="closed" value="true" />
+      <created>1762179565207</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762179565207</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +384,8 @@
     <MESSAGE value="add new endpoits, dont working again, because some endpoint is missing" />
     <MESSAGE value="stable version removed, beta renamed into api" />
     <MESSAGE value="versioning implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="versioning implemented" />
+    <MESSAGE value="client init and aspire registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="client init and aspire registration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

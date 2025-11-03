@@ -21,7 +21,6 @@ public static partial class ApiBuilder
                        .AllowImplicitFlow()
                        .AllowDeviceAuthorizationFlow();
                 
-                //TODO: find missing endpoint
                 options.SetAuthorizationEndpointUris("connect/authorize");
                 options.SetTokenEndpointUris("connect/token");
                 options.SetIntrospectionEndpointUris("connect/introspect");
