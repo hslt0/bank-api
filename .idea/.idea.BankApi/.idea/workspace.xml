@@ -17,21 +17,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939e0976-0f83-487e-afa9-7fc8be32b162" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BankApi.Service.Api/BankApi.Service.Api.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Versioning.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Orchestration/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Orchestration/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/BankApi.Service.Beta.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.Bank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.Bank.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.OAuth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.OAuth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.Teller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.Teller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/appexamples.json" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/appexamples.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/apptests.http" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/apptests.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.slnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/BankApi.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/BankApi.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Helper.ApiVersionHeaderMiddleware.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.Bank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.Bank.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.OAuth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.OAuth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.Teller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.Teller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Service.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Service.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +46,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f7adad0bb41bbac9168e6085f034291f56362cd3f7ec69c2a2485ea586bcd/IAuthenticationSchemeProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Versioning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BankApi.Core/Implementation/Db.OAuth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BankApi.Core/Implementation/Model.DeviceAuth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BankApi.Core/Implementation/Model.User.cs" root0="FORCE_HIGHLIGHTING" />
@@ -297,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762007181946</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="stable version removed, beta renamed into api">
+      <option name="closed" value="true" />
+      <created>1762175542857</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762175542857</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +328,8 @@
     <MESSAGE value="adapt architecture to a project, fix most of problems" />
     <MESSAGE value="db was added, connect/token endpoint is working now" />
     <MESSAGE value="add new endpoits, dont working again, because some endpoint is missing" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new endpoits, dont working again, because some endpoint is missing" />
+    <MESSAGE value="stable version removed, beta renamed into api" />
+    <option name="LAST_COMMIT_MESSAGE" value="stable version removed, beta renamed into api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

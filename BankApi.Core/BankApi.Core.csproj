@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc" Version="8.1.0" />
     <PackageReference Include="Aspire.Azure.Storage.Blobs" Version="9.*" />
     <PackageReference Include="AspNetCore.Authentication.ApiKey" Version="9.*" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />

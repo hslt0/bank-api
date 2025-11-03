@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using BankApi.Core.Defaults;
 using Gridify;
 using Microsoft.OpenApi;
 
@@ -18,6 +19,7 @@ builder.AddAzureClients();
 builder.Services.ConfigureJson();
 builder.Services.AddHealthChecks();
 builder.Services.AddAuthServices(); // Oauth service
+builder.Services.AddVersioning(); // Versioning service
 builder.Services.AddDataServices();
 builder.Services.AddDownstreamApiServices();
 builder.Services.AddOpenApiServices();
@@ -30,9 +32,7 @@ var app = builder.Build();
 
 app.MapJwk(out var jwk); // register JWKS endpoint
 app.UseMiddleware<JwsResponseSigningMiddleware>(jwk);
-app.UseMiddleware<ApiVersionHeaderMiddleware>();
 app.UseExceptionHandler();
-app.UsePathBase(new($"/{GlobalConfiguration.ApiDocument.Info.Version}")); // Useful when versioning routing happens in an API Management system
 app.UseAuthorization(); // explicitly register because we use path base
 app.UseMiddleware<EntraIdTokenReuseMiddleware>(); // needs to be at least after authorization
 app.UseRateLimiter();
