@@ -14,16 +14,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="939e0976-0f83-487e-afa9-7fc8be32b162" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BankApi.Core/Implementation/Model.DeviceAuth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Core/Implementation/Db.OAuth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Implementation/Db.OAuth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Core/Implementation/Model.User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Implementation/Model.User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Core/Implementation/Operation.Oauth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Implementation/Operation.Oauth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.OAuth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Beta/MapEndpoints.OAuth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" afterDir="false" />
-    </list>
+    <list default="true" id="939e0976-0f83-487e-afa9-7fc8be32b162" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature" />
+        <entry key="$PROJECT_DIR$" value="OAuth" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,22 +54,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Aspire Host.BankApi.Orchestration: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;OAuth&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Aspire Host.BankApi.Orchestration: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Aspire Host.BankApi.Orchestration: https">
     <configuration name="BankApi.Orchestration: generate-manifest" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" />
