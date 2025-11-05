@@ -1,6 +1,7 @@
 using AspNetCore.Authentication.ApiKey;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.JsonWebTokens;
+using OpenIddict.Abstractions;
 using OpenIddict.Validation.AspNetCore;
 
 public static partial class ApiBuilder
@@ -40,7 +41,8 @@ public static partial class ApiBuilder
                        .EnableAuthorizationEndpointPassthrough()
                        .EnableEndSessionEndpointPassthrough()
                        .EnableUserInfoEndpointPassthrough()
-                       .EnableStatusCodePagesIntegration();
+                       .EnableStatusCodePagesIntegration()
+                       .EnableEndUserVerificationEndpointPassthrough();
             })
             .AddValidation(options =>
             {
@@ -94,6 +96,40 @@ public static partial class ApiBuilder
             });
         });
 
+        services.AddHostedService<OAuthSeedHostedService>();
+
         return services;
     }
+}
+
+public class OAuthSeedHostedService(IServiceProvider provider) : IHostedService
+{
+    public async Task StartAsync(CancellationToken cancellationToken)
+    {
+        using var scope = provider.CreateScope();
+        var manager = scope.ServiceProvider.GetRequiredService<IOpenIddictApplicationManager>();
+
+        if (await manager.FindByClientIdAsync("console-client", cancellationToken) is null)
+        {
+            await manager.CreateAsync(new OpenIddictApplicationDescriptor
+            {
+                ClientId = "console-client",
+                ClientSecret = "console-secret",
+                DisplayName = "Console Client App",
+                Permissions =
+                {
+                    OpenIddictConstants.Permissions.Endpoints.Token,
+                    OpenIddictConstants.Permissions.Endpoints.DeviceAuthorization,
+                    OpenIddictConstants.Permissions.Endpoints.Introspection,
+                    OpenIddictConstants.Permissions.GrantTypes.Password,
+                    OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
+                    OpenIddictConstants.Permissions.GrantTypes.RefreshToken,
+                    OpenIddictConstants.Permissions.GrantTypes.DeviceCode,
+                    OpenIddictConstants.Permissions.Scopes.Profile
+                }
+            }, cancellationToken);
+        }
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 }

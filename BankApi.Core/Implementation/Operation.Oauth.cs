@@ -7,7 +7,7 @@ using OpenIddict.Abstractions;
 using OpenIddict.EntityFrameworkCore.Models;
 using OpenIddict.Server.AspNetCore;
 
-public static class OauthOperation
+public class OauthOperation
 {
     public static async Task<IResult> GetToken(HttpContext context, OAuthDb db)
     {
@@ -174,74 +174,25 @@ public static class OauthOperation
         return principal;
     }
     
-    public static async Task<IResult> DeviceAuthorization(HttpContext context, OAuthDb db)
-    {
-        var request = context.GetOpenIddictServerRequest()
-                      ?? throw new InvalidOperationException("Invalid device authorization request.");
-
-        if (string.IsNullOrEmpty(request.ClientId))
-            return Results.BadRequest(new { error = "invalid_client", error_description = "Missing client_id" });
-        
-        var deviceCode = Guid.NewGuid().ToString("N");
-        var userCode = Random.Shared.Next(100000, 999999).ToString();
-
-        var record = new DeviceAuthorization
-        {
-            DeviceCode = deviceCode,
-            UserCode = userCode,
-            IsApproved = false,
-            ExpiresAt = DateTime.UtcNow.AddMinutes(10),
-            Username = null,
-        };
-
-        db.DeviceAuthorizations.Add(record);
-        await db.SaveChangesAsync();
-
-        var verificationUri = $"{context.Request.Scheme}://{context.Request.Host}/connect/enduserverification";
-
-        var response = new
-        {
-            device_code = deviceCode,
-            user_code = userCode,
-            verification_uri = verificationUri,
-            verification_uri_complete = $"{verificationUri}?user_code={userCode}",
-            expires_in = 600,
-            interval = 5
-        };
-
-        return Results.Json(response);
-    }
+    public static Task DeviceAuthorization() => Task.CompletedTask;
     
     public static async Task<IResult> EndUserVerification(HttpContext context, OAuthDb db)
     {
-        var userCode = context.Request.Query["user_code"].FirstOrDefault();
-        var username = context.Request.Query["username"].FirstOrDefault();
-        var password = context.Request.Query["password"].FirstOrDefault();
+        var request = context.GetOpenIddictServerRequest();
 
-        if (string.IsNullOrEmpty(userCode))
-            return Results.BadRequest(new { error = "Missing user_code" });
+        if (request == null)
+            return Results.BadRequest(new { error = "Invalid OpenIddict request" });
 
-        var record = await db.DeviceAuthorizations.FirstOrDefaultAsync(d =>
-            d.UserCode == userCode && d.ExpiresAt > DateTime.UtcNow);
+        var authResult = await context.AuthenticateAsync(
+            OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
 
-        if (record == null)
-            return Results.BadRequest(new { error = "Invalid or expired user code" });
-
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            return Results.BadRequest(new { error = "Missing username or password" });
-
-        var user = await db.Users.FirstOrDefaultAsync(u => u.Username == username);
-        if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
-            return Results.BadRequest(new { error = "Invalid username or password" });
-
-        record.Username = username;
-        record.IsApproved = true;
-        await db.SaveChangesAsync();
-
+        if (authResult.Principal == null)
+            return Results.Unauthorized();
+        
         return Results.Ok(new
         {
-            message = "Device successfully authorized. You can return to your device now.",
-            device_code = record.DeviceCode
+            message = "Device verified successfully.",
+            subject = authResult.Principal.Identity?.Name ?? "(no name)"
         });
     }
 }

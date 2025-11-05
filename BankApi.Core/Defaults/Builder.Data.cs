@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 public static partial class ApiBuilder
 {
+    private static readonly InMemoryDatabaseRoot OAuthDatabaseRoot = new();
+    
     public static IServiceCollection AddDataServices(this IServiceCollection services)
     {
         services.AddDbContext<BankDb>(options =>
@@ -15,9 +18,7 @@ public static partial class ApiBuilder
         services.AddDatabaseDeveloperPageExceptionFilter();
         
         services.AddDbContext<OAuthDb>(options =>
-        {
-            options.UseInMemoryDatabase(GlobalConfiguration.ApiSettings!.OAuthDatabaseName);
-        });
+            options.UseInMemoryDatabase(GlobalConfiguration.ApiSettings!.OAuthDatabaseName, OAuthDatabaseRoot));
 
         return services;
     }

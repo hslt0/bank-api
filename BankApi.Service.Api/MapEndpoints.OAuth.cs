@@ -59,6 +59,7 @@ public static partial class ApiMapper
             .HasApiVersion(1.0);
         
         // === DEVICE AUTHORIZATION ===
+        //OpenIddict handle this by itself
         oauthItems.MapPost("/deviceauthorization", OauthOperation.DeviceAuthorization)
             .WithName("DeviceAuthorization")
             .WithSummary("Device authorization endpoint")
