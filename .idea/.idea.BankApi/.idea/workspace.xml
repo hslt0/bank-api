@@ -89,7 +89,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Aspire Host.BankApi.Orchestration: https">
+  <component name="RunManager" selected="Aspire Host.BankApi.Orchestration: generate-manifest">
     <configuration name="BankApi.Orchestration: generate-manifest" type="AspireHostConfiguration" factoryName="Aspire Host" activateToolWindowBeforeRun="false">
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" />
       <option name="PROJECT_TFM" value="net10.0" />
