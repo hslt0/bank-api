@@ -57,21 +57,6 @@ public static partial class ApiMapper
             .WithSummary("Revoke token")
             .WithDescription("Revokes an existing access or refresh token.")
             .HasApiVersion(1.0);
-        
-        // === DEVICE AUTHORIZATION ===
-        //OpenIddict handle this by itself
-        oauthItems.MapPost("/deviceauthorization", OauthOperation.DeviceAuthorization)
-            .WithName("DeviceAuthorization")
-            .WithSummary("Device authorization endpoint")
-            .WithDescription("Starts a device authorization flow for devices without browsers.")
-            .HasApiVersion(1.0);
-
-        // === END-USER VERIFICATION ===
-        oauthItems.MapGet("/enduserverification", OauthOperation.EndUserVerification)
-            .WithName("EndUserVerification")
-            .WithSummary("End user verification endpoint")
-            .WithDescription("Allows the user to verify and authorize a device code.")
-            .HasApiVersion(1.0);
 
         return app;
     }

@@ -18,9 +18,7 @@ public static partial class ApiBuilder
                 options.AllowPasswordFlow()
                        .AllowClientCredentialsFlow()
                        .AllowRefreshTokenFlow()
-                       .AllowAuthorizationCodeFlow()
-                       .AllowImplicitFlow()
-                       .AllowDeviceAuthorizationFlow();
+                       .AllowAuthorizationCodeFlow();
                 
                 options.SetAuthorizationEndpointUris("connect/authorize");
                 options.SetTokenEndpointUris("connect/token");
@@ -28,8 +26,6 @@ public static partial class ApiBuilder
                 options.SetRevocationEndpointUris("connect/revoke");
                 options.SetUserInfoEndpointUris("connect/userinfo");
                 options.SetEndSessionEndpointUris("connect/logout");
-                options.SetDeviceAuthorizationEndpointUris("connect/deviceauthorization");
-                options.SetEndUserVerificationEndpointUris("connect/enduserverification");
 
                 options.AcceptAnonymousClients();
 
@@ -41,8 +37,7 @@ public static partial class ApiBuilder
                        .EnableAuthorizationEndpointPassthrough()
                        .EnableEndSessionEndpointPassthrough()
                        .EnableUserInfoEndpointPassthrough()
-                       .EnableStatusCodePagesIntegration()
-                       .EnableEndUserVerificationEndpointPassthrough();
+                       .EnableStatusCodePagesIntegration();
             })
             .AddValidation(options =>
             {

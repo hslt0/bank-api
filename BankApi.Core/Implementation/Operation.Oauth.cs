@@ -7,7 +7,7 @@ using OpenIddict.Abstractions;
 using OpenIddict.EntityFrameworkCore.Models;
 using OpenIddict.Server.AspNetCore;
 
-public class OauthOperation
+public static class OauthOperation
 {
     public static async Task<IResult> GetToken(HttpContext context, OAuthDb db)
     {
@@ -172,27 +172,5 @@ public class OauthOperation
         });
 
         return principal;
-    }
-    
-    public static Task DeviceAuthorization() => Task.CompletedTask;
-    
-    public static async Task<IResult> EndUserVerification(HttpContext context, OAuthDb db)
-    {
-        var request = context.GetOpenIddictServerRequest();
-
-        if (request == null)
-            return Results.BadRequest(new { error = "Invalid OpenIddict request" });
-
-        var authResult = await context.AuthenticateAsync(
-            OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
-
-        if (authResult.Principal == null)
-            return Results.Unauthorized();
-        
-        return Results.Ok(new
-        {
-            message = "Device verified successfully.",
-            subject = authResult.Principal.Identity?.Name ?? "(no name)"
-        });
     }
 }

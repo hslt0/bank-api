@@ -1,11 +1,9 @@
 ﻿using BankApi.Client.Services;
 
 Console.WriteLine("=== BankApi OAuth Client ===");
-Console.Write("Enter API base URL (e.g. https://localhost:5202): ");
 var baseUrl = "https://localhost:5202";
 
 var auth = new AuthClient(baseUrl);
-var device = new DeviceFlowClient(baseUrl);
 
 while (true)
 {
@@ -60,19 +58,6 @@ while (true)
             Console.Write("Token to revoke: ");
             var revoke = Console.ReadLine()!;
             await auth.RevokeAsync(revoke);
-            break;
-
-        case "6":
-            Console.Write("Client ID: ");
-            var cId = Console.ReadLine()!;
-            var (deviceCode, userCode, verificationUri) = await device.StartDeviceFlowAsync(cId);
-            Console.WriteLine($"Now go to {verificationUri} and enter user code {userCode}");
-
-            Console.Write("Enter username: ");
-            var u = Console.ReadLine()!;
-            Console.Write("Enter password: ");
-            var p = Console.ReadLine()!;
-            await device.VerifyAsync(userCode, u, p);
             break;
 
         case "0":

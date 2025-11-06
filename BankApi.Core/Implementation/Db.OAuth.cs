@@ -3,7 +3,6 @@
 public class OAuthDb(DbContextOptions<OAuthDb> options) : DbContext(options)
 {
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<DeviceAuthorization> DeviceAuthorizations { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder

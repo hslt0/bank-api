@@ -18,18 +18,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="939e0976-0f83-487e-afa9-7fc8be32b162" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BankApi.Client/Services/AuthClient.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BankApi.Client/Services/DeviceFlowClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BankApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Client/ApiClient.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Client/Models/Bank.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Client/Models/TokenResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Client/Models/TokenResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankApi.Client/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Client/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Client/Services/DeviceFlowClient.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Auth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Data.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Defaults/Builder.Data.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/Implementation/Db.OAuth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Implementation/Db.OAuth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BankApi.Core/Implementation/Model.DeviceAuth.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BankApi.Core/Implementation/Operation.Oauth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Core/Implementation/Operation.Oauth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Orchestration/BankApi.Orchestration.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.OAuth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BankApi.Service.Api/MapEndpoints.OAuth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Specs.Generated/openapi_v2.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,7 +301,7 @@
       <workItem from="1761912795615" duration="7313000" />
       <workItem from="1762000548824" duration="6483000" />
       <workItem from="1762080893124" duration="2283000" />
-      <workItem from="1762371192400" duration="11350000" />
+      <workItem from="1762371192400" duration="13097000" />
     </task>
     <task id="LOCAL-00001" summary="test integration of openiddict">
       <option name="closed" value="true" />
@@ -371,7 +367,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762185581966</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="basic client and major fix of auth system(device flow part)">
+      <option name="closed" value="true" />
+      <created>1762382879803</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762382879803</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +404,8 @@
     <MESSAGE value="versioning implemented" />
     <MESSAGE value="client init and aspire registration" />
     <MESSAGE value="basic client implamentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic client implamentation" />
+    <MESSAGE value="basic client and major fix of auth system(device flow part)" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic client and major fix of auth system(device flow part)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
