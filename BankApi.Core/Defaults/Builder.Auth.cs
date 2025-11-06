@@ -81,7 +81,8 @@ public static partial class ApiBuilder
             {
                 policy.RequireAuthenticatedUser();
                 policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
-                policy.RequireRole("banker", "ceo");
+                policy.AuthenticationSchemes.Add(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
+                policy.RequireRole("banker", "ceo", "admin");
             });
 
             options.AddPolicy("bank_subscription", policy =>
@@ -114,12 +115,10 @@ public class OAuthSeedHostedService(IServiceProvider provider) : IHostedService
                 Permissions =
                 {
                     OpenIddictConstants.Permissions.Endpoints.Token,
-                    OpenIddictConstants.Permissions.Endpoints.DeviceAuthorization,
                     OpenIddictConstants.Permissions.Endpoints.Introspection,
                     OpenIddictConstants.Permissions.GrantTypes.Password,
                     OpenIddictConstants.Permissions.GrantTypes.ClientCredentials,
                     OpenIddictConstants.Permissions.GrantTypes.RefreshToken,
-                    OpenIddictConstants.Permissions.GrantTypes.DeviceCode,
                     OpenIddictConstants.Permissions.Scopes.Profile
                 }
             }, cancellationToken);

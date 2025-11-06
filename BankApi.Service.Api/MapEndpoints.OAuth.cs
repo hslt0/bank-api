@@ -9,7 +9,7 @@ public static partial class ApiMapper
             .RequireRateLimiting("fixed")
             .RequireCors("generic");
         
-        var versionSet = app.NewApiVersionSet("OAuth")
+        var versionSet = app.NewApiVersionSet("VersionSet")
             .HasApiVersion(new ApiVersion(1, 0))
             .ReportApiVersions()
             .Build();

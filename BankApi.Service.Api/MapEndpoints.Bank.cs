@@ -10,7 +10,7 @@ public static partial class ApiMapper
             .RequireAuthorization("bank_subscription")
             .RequireCors("generic");
         
-        var versionSet = app.NewApiVersionSet("OAuth")
+        var versionSet = app.NewApiVersionSet("VersionSet")
             .HasApiVersion(new ApiVersion(1, 0))
             .ReportApiVersions()
             .Build();
